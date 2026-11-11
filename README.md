@@ -1,4 +1,4 @@
-# HR Workforce Dashboard (Power BI)
+# HR Workforce Dashboard
 
 > Dashboard Power BI phân tích nhân sự: quy mô lực lượng lao động, nghỉ việc (turnover), mức độ hài lòng/gắn kết, vắng mặt, chi phí lương và nguồn tuyển dụng.
 
@@ -6,9 +6,7 @@
 
 ## 1. Tổng quan dự án
 
-**Mục tiêu:** Cung cấp cho bộ phận HR và ban lãnh đạo một góc nhìn tập trung về sức khỏe lực lượng lao động, từ đó phát hiện điểm nóng (phòng ban có tỷ lệ nghỉ việc cao, nhóm nhân sự rủi ro) và hỗ trợ ra quyết định về giữ chân, tuyển dụng và ngân sách nhân sự.
-
-**File:** `HR_Workforce_Databse.pbix`
+**Mục tiêu:** Cung cấp cho bộ phận HR và ban lãnh đạo một góc nhìn về sức khỏe lực lượng lao động, từ đó phát hiện điểm nóng (phòng ban có tỷ lệ nghỉ việc cao, nhóm nhân sự rủi ro) và hỗ trợ ra quyết định về giữ chân, tuyển dụng và ngân sách nhân sự.
 
 ### Cấu trúc report (2 trang)
 
@@ -26,8 +24,6 @@
 - Avg. Age
 - Avg. Satisfaction Score
 - Avg. Absenteeism Rate
-
-*(Ngoài ra bảng tổng hợp còn có Avg. Engagement Score.)*
 
 ### Các biểu đồ
 
@@ -49,49 +45,31 @@ Mô hình dạng star/snowflake gồm các bảng:
 - **Dimensions**: bảng hỗ trợ cho slicer chọn chiều phân tích động
 - **_Measures**: bảng chứa các measure DAX (Total Employees, Turnover Rate, Avg. Tenure, v.v.)
 
-### Công nghệ
-
-Power BI Desktop, DAX, mô hình dữ liệu quan hệ. Dữ liệu dạng bộ dữ liệu HR (HR Dataset).
-
 ---
 
 ## 2. Main Findings
 
-> ⚠️ **Lưu ý:** Phần dữ liệu trong file .pbix được nén định dạng riêng nên các giá trị số cụ thể không đọc được. Các mục dưới đây là **khung phân tích** tương ứng với từng biểu đồ trong dashboard. Hãy điền số liệu thực tế từ dashboard vào các ô `[...]`.
-
-| # | Chủ đề | Nhận định (điền số liệu) | Nguồn biểu đồ |
+| # | Chủ đề | Nhận định | Nguồn biểu đồ |
 |---|---|---|---|
-| 1 | Quy mô và chi phí | Tổng nhân sự `[...]`, tổng chi phí lương `[...]`, tuổi trung bình `[...]` | KPI cards |
-| 2 | Turnover | Tỷ lệ nghỉ việc toàn công ty `[...]%`; phòng ban cao nhất: `[...]` (`[...]%`), thấp nhất: `[...]` | Turnover Rate by Department |
-| 3 | Lý do nghỉ việc | Lý do phổ biến nhất: `[...]` (`[...]%` tổng số nghỉ); nhóm lý do có thể kiểm soát (lương, không hài lòng, sự nghiệp) chiếm `[...]%` | Departure Reason |
-| 4 | Cơ cấu tuổi | Nhóm tuổi đông nhất: `[...]`; tỷ trọng nhóm 55+ (nguy cơ nghỉ hưu): `[...]%` | Age Distribution |
-| 5 | Nguồn tuyển dụng | Nguồn đưa về nhiều nhân sự nhất: `[...]`; nguồn có Engagement/Tenure tốt nhất: `[...]` | Top Recruitment Sources |
-| 6 | Đa dạng giới | Tỷ lệ Nam/Nữ `[...]/[...]`; chênh lệch turnover giữa hai giới `[...]` | Gender Distribution |
-| 7 | Hài lòng, gắn kết, vắng mặt | Phòng ban có Satisfaction thấp và Absenteeism cao: `[...]` | Bảng Workforce Metrics |
-| 8 | Hiệu suất | Phân bố Performance Score và mối liên hệ với Retention Risk: `[...]` | Trang Workforce Database |
+| 1 | Quy mô và chi phí | Tổng nhân sự - 298, tổng chi phí lương - 20M, tuổi trung bình - 47.8 | KPI cards |
+| 2 | Turnover | Tỷ lệ nghỉ việc toàn công ty - 34.9%; phòng ban cao nhất: Production (40.89%), thấp nhất: 16.67% | Turnover Rate by Department |
+| 3 | Lý do nghỉ việc | Lý do phổ biến nhất: Another position (19.23% tổng số nghỉ); nhóm lý do có thể kiểm soát (lương, không hài lòng, chính sách làm việc) chiếm 42.31% | Departure Reason |
+| 4 | Cơ cấu tuổi | Nhóm tuổi đông nhất: 35-44; tỷ trọng nhóm 55+ (nguy cơ nghỉ hưu): 20.47% | Age Distribution |
+| 5 | Nguồn tuyển dụng | Nguồn đưa về nhiều nhân sự nhất: Indeed; nguồn có Tenure tốt nhất: Google Search | Top Recruitment Sources |
+| 6 | Đa dạng giới | Tỷ lệ Nam/Nữ 0.76:1; chênh lệch turnover giữa hai giới 1.39% | Gender Distribution |
+| 7 | Hài lòng, gắn kết, vắng mặt | Phòng ban có Satisfaction thấp và Absenteeism cao: Production, IT/IS | Bảng Workforce Metrics |
+| 8 | Hiệu suất | Satisfaction Score và mối liên hệ với Retention Risk | Trang Workforce Database |
 
 ---
 
 ## 3. Main Recommendations
 
-Các khuyến nghị dưới đây là **hướng hành động chung** gắn với từng nhóm chỉ số; cần điều chỉnh theo số liệu thực tế ở mục 2.
-
 1. **Giảm turnover ở phòng ban rủi ro cao:** thực hiện khảo sát nghỉ việc (exit interview) và stay interview tại các phòng ban có Turnover Rate cao nhất; đặt mục tiêu giảm tỷ lệ theo quý.
 2. **Xử lý các lý do nghỉ việc kiểm soát được:** nếu "More Money" và "Unhappy" nổi bật, rà soát khung lương so với thị trường, lộ trình thăng tiến và chất lượng quản lý trực tiếp.
-3. **Tối ưu kênh tuyển dụng:** tăng ngân sách cho nguồn mang lại nhân viên gắn bó lâu và Engagement cao; xem xét cắt giảm nguồn có tenure ngắn.
+3. **Tối ưu kênh tuyển dụng:** tăng ngân sách cho nguồn mang lại nhân viên gắn bó lâu dài; xem xét cắt giảm nguồn có tenure ngắn.
 4. **Chuẩn bị kế nhiệm:** với nhóm tuổi 55+, xây dựng kế hoạch chuyển giao tri thức và đào tạo nhân sự kế cận.
-5. **Theo dõi nhóm Retention Risk cao:** sử dụng bộ lọc Performance Score + Retention Risk ở trang Workforce Database để ưu tiên giữ chân nhân viên hiệu suất cao có rủi ro nghỉ.
+5. **Theo dõi nhóm Retention Risk cao:** sử dụng bộ lọc Satisfaction Score + Retention Risk ở trang Workforce Database để ưu tiên giữ chân nhân viên hiệu suất cao có rủi ro nghỉ.
 6. **Cải thiện vắng mặt và hài lòng:** triển khai chương trình can thiệp tại phòng ban có Absenteeism cao, Satisfaction thấp (làm việc linh hoạt, wellbeing, đào tạo quản lý).
-7. **Đảm bảo công bằng và đa dạng:** nếu turnover chênh lệch rõ giữa các nhóm giới/chủng tộc, rà soát chính sách đãi ngộ và môi trường làm việc.
-
----
-
-## 4. Cách sử dụng
-
-1. Mở file `HR_Workforce_Databse.pbix` bằng Power BI Desktop.
-2. Trang **Executive Summary**: dùng slicer "Dimension" để đổi chiều so sánh các chỉ số.
-3. Trang **Workforce Database**: lọc theo Department, Manager, Performance Score hoặc tên nhân viên để xem chi tiết.
-4. Dùng thanh điều hướng (page navigator) để chuyển trang.
 
 ---
 
