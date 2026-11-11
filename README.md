@@ -8,7 +8,16 @@
 
 **Mục tiêu:** Cung cấp cho bộ phận HR và ban lãnh đạo một góc nhìn về sức khỏe lực lượng lao động, từ đó phát hiện điểm nóng (phòng ban có tỷ lệ nghỉ việc cao, nhóm nhân sự rủi ro) và hỗ trợ ra quyết định về giữ chân, tuyển dụng và ngân sách nhân sự.
 
-### Cấu trúc report (2 trang)
+### Mô hình dữ liệu
+
+Mô hình dạng star gồm các bảng:
+
+- **Employee** (fact): thông tin nhân viên, giới tính, nhóm tuổi, nguồn tuyển dụng, lý do nghỉ việc, trạng thái, rủi ro giữ chân (Retention Risk), chủng tộc, v.v.
+- **Department**, **Position**, **Manager**, **Performance**, **MaritalStatus**: các bảng chiều (dimension)
+- **Dimensions**: bảng hỗ trợ cho slicer chọn chiều phân tích động
+- **_Measures**: bảng chứa các measure DAX (Total Employees, Turnover Rate, Avg. Tenure, v.v.)
+
+### Cấu trúc report
 
 | Trang | Nội dung |
 |---|---|
@@ -17,39 +26,36 @@
 
 ### KPI chính (Executive Summary)
 
-- Total Employees
-- Total Salary Expenses
-- Employee Turnover Rate
-- Avg. Tenure
-- Avg. Age
-- Avg. Satisfaction Score
-- Avg. Absenteeism Rate
+ <img width="1026" height="70" alt="image" src="https://github.com/user-attachments/assets/fffc976d-ce81-4bd3-ab7c-a3bd99e5b2a9" />
 
-### Các biểu đồ
 
-| Biểu đồ | Nội dung |
-|---|---|
-| Age Distribution | Số nhân viên theo nhóm tuổi và phòng ban (nhóm tuổi: 25-34, 35-44, 45-54, 55-64, 65+) |
-| Departure Reason | Số nhân viên theo lý do nghỉ việc (vd: More Money, Career Change, Unhappy, Relocation Out Of Area, Military, Return To School, Terminated for Cause, No-Call No-Show…) |
-| Turnover Rate by Department | Tỷ lệ nghỉ việc theo phòng ban |
-| Top Recruitment Sources | Funnel nguồn tuyển dụng (LinkedIn, Employee Referral, Google Search, CareerBuilder, Diversity Job Fair, Website…), tooltip hiển thị Engagement và Tenure |
-| Gender Distribution | Cơ cấu giới tính, tooltip hiển thị Turnover Rate |
-| Workforce Metrics Overview by Dimension | Bảng so sánh các chỉ số chính theo phòng ban |
+### Các biểu đồ chính
+- Age Distribution: Số nhân viên theo nhóm tuổi (nhóm tuổi: 25-34, 35-44, 45-54, 55-64, 65+)
+<img width="538" height="368" alt="image" src="https://github.com/user-attachments/assets/fb46d6d1-4460-4a3f-9f66-5af2a34239f7" />
 
-### Mô hình dữ liệu
+- Gender Distribution: Cơ cấu giới tính, tooltip hiển thị Turnover Rate
+<img width="584" height="392" alt="image" src="https://github.com/user-attachments/assets/30b947d5-ebd1-4ff6-b8a7-4e8dae62e5f9" />
 
-Mô hình dạng star/snowflake gồm các bảng:
+- Departure Reason: Số nhân viên theo lý do nghỉ việc (vd: More Money, Career Change, Unhappy, Relocation Out Of Area, Military, Return To School, Terminated for Cause, No-Call No-Show…)
+<img width="794" height="410" alt="image" src="https://github.com/user-attachments/assets/bea3a140-e71a-4757-9e05-d6e693c42d22" />
 
-- **Employee** (bảng chính): thông tin nhân viên, giới tính, nhóm tuổi, nguồn tuyển dụng, lý do nghỉ việc, trạng thái, rủi ro giữ chân (Retention Risk), chủng tộc, v.v.
-- **Department**, **Position**, **Manager**, **Performance**, **MaritalStatus**: các bảng chiều (dimension)
-- **Dimensions**: bảng hỗ trợ cho slicer chọn chiều phân tích động
-- **_Measures**: bảng chứa các measure DAX (Total Employees, Turnover Rate, Avg. Tenure, v.v.)
+- Turnover Rate by Department: Tỷ lệ nghỉ việc theo phòng ban
+<img width="769" height="370" alt="image" src="https://github.com/user-attachments/assets/04934ece-cebc-48d9-b9ab-c04a13cfe0a4" />
+
+- Top Recruitment Sources: Funnel nguồn tuyển dụng (LinkedIn, Employee Referral, Google Search, CareerBuilder, Diversity Job Fair, Website…), tooltip hiển thị Engagement và Tenure
+<img width="612" height="442" alt="image" src="https://github.com/user-attachments/assets/cbe9137f-f502-47c7-bf39-2d5b6306dd7f" />
+
+- Workforce Metrics Overview by Dimension: Bảng so sánh các chỉ số chính theo phòng ban, vị trí, giới tính, quốc tịch, tuổi, tình trạng hôn nhân, dân tộc
+<img width="717" height="234" alt="image" src="https://github.com/user-attachments/assets/69e92a3d-8279-4d75-93db-e3e254ed2752" />
+
+- Trang Workforce Database: Tổng hợp thông tin về nhân viên với các bộ lọc Tên, Phòng ban, Performance score, Quản lý
+<img width="956" height="488" alt="image" src="https://github.com/user-attachments/assets/77c9e072-79ba-46e1-a10d-02969da7c3e1" />
 
 ---
 
 ## 2. Main Findings
 
-| # | Chủ đề | Nhận định | Nguồn biểu đồ |
+|  | Vấn đề | Nhận định | Nguồn biểu đồ |
 |---|---|---|---|
 | 1 | Quy mô và chi phí | Tổng nhân sự - 298, tổng chi phí lương - 20M, tuổi trung bình - 47.8 | KPI cards |
 | 2 | Turnover | Tỷ lệ nghỉ việc toàn công ty - 34.9%; phòng ban cao nhất: Production (40.89%), thấp nhất: 16.67% | Turnover Rate by Department |
@@ -70,7 +76,6 @@ Mô hình dạng star/snowflake gồm các bảng:
 4. **Chuẩn bị kế nhiệm:** với nhóm tuổi 55+, xây dựng kế hoạch chuyển giao tri thức và đào tạo nhân sự kế cận.
 5. **Theo dõi nhóm Retention Risk cao:** sử dụng bộ lọc Satisfaction Score + Retention Risk ở trang Workforce Database để ưu tiên giữ chân nhân viên hiệu suất cao có rủi ro nghỉ.
 6. **Cải thiện vắng mặt và hài lòng:** triển khai chương trình can thiệp tại phòng ban có Absenteeism cao, Satisfaction thấp (làm việc linh hoạt, wellbeing, đào tạo quản lý).
-
 ---
 
 ## 5. Hạn chế
